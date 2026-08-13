@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ExperienceChess</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Trunk compile la crate vers WebAssembly et injecte le chargeur ici. -->
+    
+<script type="module">
+import init, * as bindings from '/experiencechess-site/chess-game-e35ad39451120003.js';
+const wasm = await init({ module_or_path: '/experiencechess-site/chess-game-e35ad39451120003_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #303030;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #d0d0d0;
+            font-family: sans-serif;
+        }
+    </style>
+<link rel="modulepreload" href="/experiencechess-site/chess-game-e35ad39451120003.js" crossorigin="anonymous" integrity="sha384-3UBWADC1IGLu6Q/B80gC37Mo69xigQE3KYVIAEmF3Tslnxm58WCLBo4aEQTnZME+"><link rel="preload" href="/experiencechess-site/chess-game-e35ad39451120003_bg.wasm" crossorigin="anonymous" integrity="sha384-YFhW4ELcxi4YbJ6a3ZexDG4YVf18rbbHYBjzjzTHt+NsAkSjVzImv7p5NOcMr8I4" as="fetch" type="application/wasm"></head>
+
+<body>
+    <div class="loading" id="loading_text">Chargement d'ExperienceChess…</div>
+    <canvas id="chess_canvas"></canvas>
+    <script>
+        // eframe efface le canvas au démarrage ; on retire le texte de
+        // chargement dès que le module wasm a pris la main.
+        addEventListener("TrunkApplicationStarted", () => {
+            document.getElementById("loading_text")?.remove();
+        });
+    </script>
+</body>
+
+</html>
