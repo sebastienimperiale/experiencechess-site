@@ -8,8 +8,8 @@
     <!-- Trunk compile la crate vers WebAssembly et injecte le chargeur ici. -->
     
 <script type="module">
-import init, * as bindings from '/experiencechess-site/chess-game-e35ad39451120003.js';
-const wasm = await init({ module_or_path: '/experiencechess-site/chess-game-e35ad39451120003_bg.wasm' });
+import init, * as bindings from '/chess-game-71f505f12aa7dabf.js';
+const wasm = await init({ module_or_path: '/chess-game-71f505f12aa7dabf_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -45,7 +45,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
             font-family: sans-serif;
         }
     </style>
-<link rel="modulepreload" href="/experiencechess-site/chess-game-e35ad39451120003.js" crossorigin="anonymous" integrity="sha384-3UBWADC1IGLu6Q/B80gC37Mo69xigQE3KYVIAEmF3Tslnxm58WCLBo4aEQTnZME+"><link rel="preload" href="/experiencechess-site/chess-game-e35ad39451120003_bg.wasm" crossorigin="anonymous" integrity="sha384-YFhW4ELcxi4YbJ6a3ZexDG4YVf18rbbHYBjzjzTHt+NsAkSjVzImv7p5NOcMr8I4" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="/chess-game-71f505f12aa7dabf.js" crossorigin="anonymous" integrity="sha384-cQ2JYFJaE+9y3Sl/Ycf1QSMofNct+hP5bazbauc1L8tTMPn85rC8R5454FLebASr"><link rel="preload" href="/chess-game-71f505f12aa7dabf_bg.wasm" crossorigin="anonymous" integrity="sha384-kMpsrh3EwGirmH4j0Gp4DFkdEsDbJGKDaCIWYbsCmkfLenbnDCOow5tkyS3Lg98Y" as="fetch" type="application/wasm"></head>
 
 <body>
     <div class="loading" id="loading_text">Chargement d'ExperienceChess…</div>
